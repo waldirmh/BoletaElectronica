@@ -8,21 +8,20 @@ const flash = require("connect-flash");
 
 const app = express();
 
-//settings
+// SETTINGS 
 
-app.set("views", path.join(__dirname, "views")); // me llama la ruta views
+app.set("views", path.join(__dirname, "views")); 
 console.log(path.join(__dirname, "views"))
-app.use(express.static(path.join(__dirname, "public"))); //  public folder
+app.use(express.static(path.join(__dirname, "public"))); 
 
-app.engine("ejs", engine); // es el motor de plantillas
-app.set("view engine", "ejs"); // sirve para validar los views del fronted
+app.engine("ejs", engine); 
+app.set("view engine", "ejs"); 
 app.set("port", process.env.PORT || 3000);
 
-// middlewares : se ejecuta antes de ser ejecutados las rutas
-// app.use(express.static('public'));
+// MIDDLEWARES
 
 app.use(morgan("dev"));
-app.use(express.urlencoded({ extended: false })); // me permite capturar datos del cliente
+app.use(express.urlencoded({ extended: false })); 
 // inicializamos la sesion
 app.use(
   sesion({
@@ -33,8 +32,8 @@ app.use(
 );
 
 app.use(flash()); 
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use((req, res, next) => {
   app.locals.signupMessage = req.flash("signupMessage");
