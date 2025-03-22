@@ -1,0 +1,13 @@
+# Node js
+node_modules
+dist/
+build/
+
+# Editor
+.vscode/
+
+# Archives Enviroment Local
+.env
+
+# Personal Folder
+src/config/config-firebase.js
