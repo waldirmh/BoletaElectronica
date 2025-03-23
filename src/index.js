@@ -2,9 +2,9 @@ const express = require("express");
 const engine = require("ejs-mate");
 const path = require("path");
 const morgan = require("morgan");
-const passport = require("passport");
 const sesion = require("express-session");
 const flash = require("connect-flash");
+const passport = require("passport");
 
 const app = express();
 
@@ -32,8 +32,8 @@ app.use(
 );
 
 app.use(flash()); 
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 app.use((req, res, next) => {
   app.locals.signupMessage = req.flash("signupMessage");
